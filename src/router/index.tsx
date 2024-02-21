@@ -1,17 +1,22 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import App from "../App";
-import Main from "../pages/Main";
+import App from '../App';
+import Main from '../pages/Main';
+import Wiki from '../pages/Wiki';
 
 export default function Router() {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: '/',
       element: <App />,
       children: [
         {
-          path: "",
+          path: '',
           element: <Main />,
+        },
+        {
+          path: 'wiki',
+          element: <Wiki />,
         },
       ],
     },

@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import App from '../App';
 import Main from '../pages/Main';
 import Wiki from '../pages/Wiki';
+import WikiCreator from '../pages/WikiCreator';
 
 export default function Router() {
   const router = createBrowserRouter([
@@ -17,6 +18,10 @@ export default function Router() {
         {
           path: 'wiki',
           element: <Wiki />,
+        },
+        {
+          path: 'wiki-creator',
+          element: <WikiCreator />,
         },
       ],
     },

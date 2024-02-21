@@ -40,10 +40,15 @@ export default function Main() {
   if (!wikis.totalElements) return <div>위키가 없습니다!</div>;
 
   return (
-    <ul className='flex h-40 flex-col items-center justify-center bg-sky-500'>
-      {wikis.wikiPageList.map(({ title }) => {
-        return <Link to='wiki'>{title}</Link>;
-      })}
-    </ul>
+    <>
+      <ul className='flex h-40 flex-col items-center justify-center bg-sky-500'>
+        {wikis.wikiPageList.map(({ title }) => {
+          return <Link to='wiki'>{title}</Link>;
+        })}
+      </ul>
+      <Link to='/wiki-creator' target='_blank'>
+        새로운 위키 추가하기
+      </Link>
+    </>
   );
 }

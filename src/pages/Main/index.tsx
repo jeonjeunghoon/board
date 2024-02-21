@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { Wikis } from '../../types/wiki';
+import { PATHS } from '../../constants/route';
 
 export default function Main() {
   const wikis: Wikis = {
@@ -43,10 +44,10 @@ export default function Main() {
     <>
       <ul className='flex h-40 flex-col items-center justify-center bg-sky-500'>
         {wikis.wikiPageList.map(({ title }) => {
-          return <Link to='wiki'>{title}</Link>;
+          return <Link to={PATHS.WIKI}>{title}</Link>;
         })}
       </ul>
-      <Link to='/wiki-creator' target='_blank'>
+      <Link to={PATHS.WIKI_CREATOR} target='_blank'>
         새로운 위키 추가하기
       </Link>
     </>

@@ -1,5 +1,6 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
+import { PATHS } from '../constants/route';
 import App from '../App';
 import Main from '../pages/Main';
 import Wiki from '../pages/Wiki';
@@ -8,19 +9,19 @@ import WikiCreator from '../pages/WikiCreator';
 export default function Router() {
   const router = createBrowserRouter([
     {
-      path: '/',
+      path: PATHS.APP,
       element: <App />,
       children: [
         {
-          path: '',
+          path: PATHS.MAIN,
           element: <Main />,
         },
         {
-          path: 'wiki',
+          path: PATHS.WIKI,
           element: <Wiki />,
         },
         {
-          path: 'wiki-creator',
+          path: PATHS.WIKI_CREATOR,
           element: <WikiCreator />,
         },
       ],

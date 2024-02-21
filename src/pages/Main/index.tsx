@@ -1,3 +1,5 @@
 export default function Main() {
-  return <>메인</>;
+  // const wikiList = [];
+
+  return <div className='text-3xl font-bold'>메인</div>;
 }

@@ -1,11 +1,7 @@
-import { useLocation } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
-import { targetWikiState } from '../../states/wikiList';
+import { useWiki } from '../../hooks/useWiki';
 
 export default function WikiContent() {
-  const { pathname } = useLocation();
-  const id = Number(pathname.split('/').pop());
-  const wiki = useRecoilValue(targetWikiState({ targetId: id }));
+  const wiki = useWiki();
 
   if (!wiki) return <div>잘못된 접근입니다.</div>;
 

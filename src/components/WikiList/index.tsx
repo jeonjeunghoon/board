@@ -2,7 +2,7 @@ import { useRecoilValue } from 'recoil';
 import { Link } from 'react-router-dom';
 
 import { wikiListState } from '../../states/wikiList';
-import { PATHS } from '../../constants/route';
+import { PATHS } from '../../constants/routes';
 
 export default function WikiList() {
   const wikiList = useRecoilValue(wikiListState);
@@ -14,7 +14,7 @@ export default function WikiList() {
       {wikiList.map(({ id, title }) => {
         return (
           <li key={id}>
-            <Link to={PATHS.WIKI}>{title}</Link>
+            <Link to={PATHS.WIKI.CONTENT}>{title}</Link>
           </li>
         );
       })}

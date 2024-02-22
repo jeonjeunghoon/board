@@ -4,7 +4,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { parseFormData } from '../../utils/form';
 import { wikiListNewIdState, wikiListState } from '../../states/wikiList';
-import { PATHS } from '../../constants/route';
+import { PATHS } from '../../constants/routes';
 import Textarea from '../../components/commons/Textarea';
 import Button from '../../components/commons/Button';
 
@@ -23,11 +23,11 @@ export default function WikiCreator() {
 
     setWikiList((oldWikiList) => [...oldWikiList, { id, title, content }]);
 
-    navigate(PATHS.MAIN);
+    navigate(`/${PATHS.WIKI.MAIN}`);
   };
 
   const cancelAddWiki = () => {
-    if (confirm('작성을 취소하시겠습니까?')) navigate(PATHS.MAIN);
+    if (confirm('작성을 취소하시겠습니까?')) navigate(`/${PATHS.WIKI.MAIN}`);
   };
 
   return (

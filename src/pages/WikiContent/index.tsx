@@ -1,10 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { PATHS } from '../../constants/routes';
 import { useWiki } from '../../hooks/useWiki';
 
 export default function WikiContent() {
-  const { id, title, content } = useWiki();
+  const { pathname } = useLocation();
+  const id = Number(pathname.split('/').pop());
+  const { title, content } = useWiki(id);
 
   if (!title || !content) return <div>잘못된 접근입니다.</div>;
 

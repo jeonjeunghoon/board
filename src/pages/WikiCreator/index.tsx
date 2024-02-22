@@ -1,15 +1,17 @@
-import { FormEvent } from 'react';
+import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 import { parseFormData } from '../../utils/form';
+import { validateNewWiki } from '../../utils/validator';
 import { wikiListNewIdState, wikiListState } from '../../states/wikiList';
 import { PATHS } from '../../constants/routes';
 import Textarea from '../../components/commons/Textarea';
 import Button from '../../components/commons/Button';
 
 export default function WikiCreator() {
-  const setWikiList = useSetRecoilState(wikiListState);
+  const [wikiList, setWikiList] = useRecoilState(wikiListState);
+  const [isError, setIsError] = useState(false);
   const id = useRecoilValue(wikiListNewIdState);
   const navigate = useNavigate();
 
@@ -21,6 +23,11 @@ export default function WikiCreator() {
     const form = new FormData(event.currentTarget);
     const { title, content } = parseFormData<string>(form, 'title', 'content');
 
+    if (!validateNewWiki(wikiList, title)) {
+      setIsError(true);
+      return;
+    }
+
     setWikiList((oldWikiList) => [...oldWikiList, { id, title, content }]);
 
     navigate(`/${PATHS.WIKI.MAIN}`);
@@ -29,6 +36,8 @@ export default function WikiCreator() {
   const cancelAddWiki = () => {
     if (confirm('작성을 취소하시겠습니까?')) navigate(`/${PATHS.WIKI.MAIN}`);
   };
+
+  if (isError) return <div>에러 발생</div>;
 
   return (
     <form className='flex flex-col' onSubmit={addWiki}>

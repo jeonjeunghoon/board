@@ -2,6 +2,7 @@ import { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
+import { parseFormData } from '../../utils/form';
 import { wikiListNewIdState, wikiListState } from '../../states/wikiList';
 import { PATHS } from '../../constants/route';
 import Textarea from '../../components/commons/Textarea';
@@ -18,8 +19,7 @@ export default function WikiCreator() {
     if (!confirm('작성을 완료하시겠습니까?')) return;
 
     const form = new FormData(event.currentTarget);
-    const title = String(form.get('title'));
-    const content = String(form.get('content'));
+    const { title, content } = parseFormData<string>(form, 'title', 'content');
 
     setWikiList((oldWikiList) => [...oldWikiList, { id, title, content }]);
 
@@ -27,9 +27,7 @@ export default function WikiCreator() {
   };
 
   const cancelAddWiki = () => {
-    if (!confirm('작성을 취소하시겠습니까?')) return;
-
-    navigate(PATHS.MAIN);
+    if (confirm('작성을 취소하시겠습니까?')) navigate(PATHS.MAIN);
   };
 
   return (

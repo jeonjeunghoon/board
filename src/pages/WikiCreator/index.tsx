@@ -30,11 +30,11 @@ export default function WikiCreator() {
 
     setWikiList((oldWikiList) => [...oldWikiList, { id, title, content }]);
 
-    navigate(`/${PATHS.WIKI.MAIN}`);
+    navigate(PATHS.WIKI.MAIN);
   };
 
   const cancelAddWiki = () => {
-    if (confirm('작성을 취소하시겠습니까?')) navigate(`/${PATHS.WIKI.MAIN}`);
+    if (confirm('작성을 취소하시겠습니까?')) navigate(PATHS.WIKI.MAIN);
   };
 
   if (isError) return <div>에러 발생</div>;

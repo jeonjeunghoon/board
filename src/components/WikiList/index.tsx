@@ -13,7 +13,7 @@ export default function WikiList() {
       {wikiList.map(({ id, title }) => {
         return (
           <li key={id}>
-            <Link to={`${id}`}>{title}</Link>
+            <Link to={String(id)}>{title}</Link>
           </li>
         );
       })}

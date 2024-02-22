@@ -1,9 +1,10 @@
 export const PATHS = {
   APP: '/',
   WIKI: {
-    MAIN: 'wiki',
-    BOARD: '',
-    CONTENT: ':wikiId',
-    CREATOR: 'creator',
+    MAIN: '/wiki',
+    BOARD: '/wiki',
+    CONTENT: '/wiki/:wikiId',
+    CREATOR: '/wiki/creator',
+    EDITOR: '/wiki/editor',
   },
 };

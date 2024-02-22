@@ -1,55 +1,31 @@
 import { Link } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 
-import { Wikis } from '../../types/wiki';
 import { PATHS } from '../../constants/route';
+import { wikiListState } from '../../states/wikiList/atom';
 
 export default function Main() {
-  const wikis: Wikis = {
-    wikiPageList: [
-      {
-        id: 0,
-        title: '제목1',
-        content: '본문1',
-      },
-      {
-        id: 1,
-        title: '제목2',
-        content: '본문2',
-      },
-      {
-        id: 2,
-        title: '제목3',
-        content: '본문3',
-      },
-      {
-        id: 3,
-        title: '제목4',
-        content: '본문4',
-      },
-      {
-        id: 4,
-        title: '제목5',
-        content: '본문5',
-      },
-    ],
-    page: 1,
-    size: 5,
-    totalElements: 5,
-    totalPages: 1,
-  };
-
-  if (!wikis.totalElements) return <div>위키가 없습니다!</div>;
+  const wikiList = useRecoilValue(wikiListState);
 
   return (
     <>
-      <ul className='flex h-40 flex-col items-center justify-center bg-sky-500'>
-        {wikis.wikiPageList.map(({ title }) => {
-          return <Link to={PATHS.WIKI}>{title}</Link>;
-        })}
-      </ul>
       <Link to={PATHS.WIKI_CREATOR} target='_blank'>
         새로운 위키 추가하기
       </Link>
+
+      {wikiList.length ? (
+        <ul className='flex h-40 flex-col items-center justify-center bg-sky-500'>
+          {wikiList.map(({ id, title }) => {
+            return (
+              <li key={id}>
+                <Link to={PATHS.WIKI}>{title}</Link>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <div>위키가 존재하지 않아요.</div>
+      )}
     </>
   );
 }

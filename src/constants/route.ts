@@ -1,6 +1,6 @@
 export const PATHS = {
   APP: '/',
-  MAIN: '',
-  WIKI: 'wiki',
-  WIKI_CREATOR: 'wiki-creator',
+  MAIN: '/',
+  WIKI: '/wiki',
+  WIKI_CREATOR: '/wiki-creator',
 };

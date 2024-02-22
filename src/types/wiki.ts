@@ -1,13 +1,12 @@
-type WikiPage = {
+export type Wiki = {
   id: number;
   title: string;
   content: string;
 };
 
 export type Wikis = {
-  wikiPageList: WikiPage[];
-  page: number;
-  size: number;
+  wikiPageList: Wiki[];
+  currentPage: number;
   totalElements: number;
   totalPages: number;
 };

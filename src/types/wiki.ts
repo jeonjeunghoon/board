@@ -3,10 +3,3 @@ export type Wiki = {
   title: string;
   content: string;
 };
-
-export type Wikis = {
-  wikiPageList: Wiki[];
-  currentPage: number;
-  totalElements: number;
-  totalPages: number;
-};

@@ -1,7 +1,7 @@
 import { selector, selectorFamily } from 'recoil';
 
 import { wikiListState } from './atom';
-import { findWikiById, generateNewWikiId } from './utils';
+import { calculateTotalPage, findWikiById, generateNewWikiId, slicedWikiList } from './utils';
 
 export const wikiListNewIdState = selector({
   key: 'wikiListNewIdState',
@@ -14,4 +14,18 @@ export const targetWikiState = selectorFamily({
     ({ targetId }: { targetId: number }) =>
     ({ get }) =>
       findWikiById(get(wikiListState), targetId),
+});
+
+export const paginatedWikiListState = selectorFamily({
+  key: 'paginatedWikiListState',
+  get:
+    ({ pageNumber }: { pageNumber: number }) =>
+    ({ get }) => {
+      const wikiList = get(wikiListState);
+
+      return {
+        paginatedWikiList: slicedWikiList(wikiList, pageNumber),
+        totalPage: calculateTotalPage(wikiList),
+      };
+    },
 });

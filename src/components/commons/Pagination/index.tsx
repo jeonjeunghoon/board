@@ -1,4 +1,9 @@
 import { generateNumberListByAscendingOrdered } from '../../../utils/list';
+import PrevArrow from '../../../assets/svgs/arrow-prev.svg?react';
+import NextArrow from '../../../assets/svgs/arrow-next.svg?react';
+import DoublePrevArrow from '../../../assets/svgs/double-arrow-left.svg?react';
+import DoubleNextArrow from '../../../assets/svgs/double-arrow-right.svg?react';
+import PaginationButton from '../../PaginationButton';
 
 type Props = {
   activePage: number;
@@ -29,30 +34,38 @@ export default function Pagination({
   const moveToNextPageGroup = () => moveToPage(startPageIndex + pageRange);
 
   return (
-    <div className='flex gap-4'>
-      <button onClick={moveToPreviousPageGroup} disabled={isDisabledPreviousGroup}>
-        {'<<'}
-      </button>
-      <button onClick={moveToPreviousPage} disabled={isDisabledPrevious}>
-        {'<'}
-      </button>
+    <div className='flex'>
+      <PaginationButton onClick={moveToPreviousPageGroup} disabled={isDisabledPreviousGroup}>
+        <DoublePrevArrow width='24px' height='24px' />
+      </PaginationButton>
+      <PaginationButton onClick={moveToPreviousPage} disabled={isDisabledPrevious}>
+        <PrevArrow width='24px' height='24px' />
+      </PaginationButton>
 
-      {PageList.map((page) => {
-        return (
-          <li key={page}>
-            <button onClick={() => moveToPage(page)} disabled={activePage === page}>
-              {page}
-            </button>
-          </li>
-        );
-      })}
+      <ul className='flex'>
+        {PageList.map((page) => {
+          const isCurrentPage = activePage === page;
 
-      <button onClick={moveToNextPage} disabled={isDisabledNext}>
-        {'>'}
-      </button>
-      <button onClick={moveToNextPageGroup} disabled={isDisabledNextGroup}>
-        {'>>'}
-      </button>
+          return (
+            <li key={page}>
+              <PaginationButton
+                onClick={() => moveToPage(page)}
+                disabled={isCurrentPage}
+                isFocused={isCurrentPage}
+              >
+                {page}
+              </PaginationButton>
+            </li>
+          );
+        })}
+      </ul>
+
+      <PaginationButton onClick={moveToNextPage} disabled={isDisabledNext}>
+        <NextArrow width='24px' height='24px' />
+      </PaginationButton>
+      <PaginationButton onClick={moveToNextPageGroup} disabled={isDisabledNextGroup}>
+        <DoubleNextArrow width='24px' height='24px' />
+      </PaginationButton>
     </div>
   );
 }

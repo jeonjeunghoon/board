@@ -4,6 +4,7 @@ import { useRecoilValue } from 'recoil';
 
 import { paginatedWikiListState } from '../../states/wikiList';
 import { PATHS } from '../../constants/routes';
+import Title from '../../components/Title';
 import WikiList from '../../components/WikiList';
 import Pagination from '../../components/commons/Pagination';
 
@@ -16,14 +17,21 @@ export default function WikiBoard() {
   );
 
   return (
-    <div>
-      <Link to={PATHS.WIKI.CREATOR} target='_blank'>
-        새로운 위키 추가하기
-      </Link>
+    <div className='flex h-full flex-col justify-between'>
+      <Title>위키 게시판</Title>
 
       <WikiList wikiList={paginatedWikiList} />
 
-      <Pagination activePage={activePage} totalPage={totalPage} handleChangePage={setActivePage} />
+      <div className='flex justify-between'>
+        <Pagination
+          activePage={activePage}
+          totalPage={totalPage}
+          handleChangePage={setActivePage}
+        />
+        <Link to={PATHS.WIKI.CREATOR} target='_blank'>
+          위키 추가하기
+        </Link>
+      </div>
     </div>
   );
 }

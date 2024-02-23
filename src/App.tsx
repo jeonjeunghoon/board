@@ -1,17 +1,14 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
-import { PATHS } from './constants/routes';
+
+import Layout from './components/Layout';
 
 function App() {
   return (
     <RecoilRoot>
-      <div>
-        <header>
-          <Link to={PATHS.WIKI.MAIN}>위키 게시판</Link>
-        </header>
-
+      <Layout>
         <Outlet />
-      </div>
+      </Layout>
     </RecoilRoot>
   );
 }

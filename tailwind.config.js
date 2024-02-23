@@ -14,7 +14,7 @@ export default {
       primaryTextBackground: '#307FFF',
       primaryTextBackgroundHover: '#1B64D9',
       secondaryTextBackground: '#FFFFFF',
-      secondaryTextBackgroundHover: '#EAF3FF',
+      secondaryTextBackgroundHover: '#F3F4F5',
       secondaryTextBackgroundFocus: '#E5E8EA',
     },
 

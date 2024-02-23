@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 
 import { Wiki } from '../../types/wiki';
 
@@ -15,7 +16,9 @@ export default function WikiList({ wikiList }: Props) {
         return (
           <li key={id}>
             <Link
-              className='hover:co hover:text block w-full rounded-lg px-6 py-8 text-2xl font-thin hover:bg-gray-100 hover:text-blue-700'
+              className={classNames(
+                'hover:text-secondaryTextHover hover:bg-secondaryTextBackgroundHover block w-full rounded-lg px-6 py-8 text-2xl font-thin',
+              )}
               to={String(id)}
             >
               {title}

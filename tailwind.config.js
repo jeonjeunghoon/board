@@ -17,6 +17,10 @@ export default {
       secondaryTextBackgroundHover: '#EAF3FF',
       secondaryTextBackgroundFocus: '#E5E8EA',
     },
+
+    borderColor: {
+      primary: '#E5E8EA',
+    },
   },
   plugins: [],
 };

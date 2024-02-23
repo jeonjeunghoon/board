@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 
 import { paginatedWikiListState } from '../../states/wikiList';
@@ -7,6 +6,7 @@ import { PATHS } from '../../constants/routes';
 import Title from '../../components/Title';
 import WikiList from '../../components/WikiList';
 import Pagination from '../../components/commons/Pagination';
+import StyledLink from '../../components/commons/StyledLink';
 
 const DEFAULT_PAGINATION_NUMBER = 1;
 
@@ -17,20 +17,20 @@ export default function WikiBoard() {
   );
 
   return (
-    <div className='flex h-full flex-col justify-between'>
+    <div className='flex h-full flex-col'>
       <Title>위키 게시판</Title>
 
       <WikiList wikiList={paginatedWikiList} />
 
-      <div className='flex justify-between'>
+      <div className='mt-auto flex w-full justify-between self-start'>
         <Pagination
           activePage={activePage}
           totalPage={totalPage}
           handleChangePage={setActivePage}
         />
-        <Link to={PATHS.WIKI.CREATOR} target='_blank'>
+        <StyledLink to={PATHS.WIKI.CREATOR} target='_blank'>
           위키 추가하기
-        </Link>
+        </StyledLink>
       </div>
     </div>
   );

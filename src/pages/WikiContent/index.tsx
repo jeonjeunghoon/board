@@ -38,7 +38,11 @@ export default function WikiContent() {
           const filteredWiki = filteredWikiList.find((info) => info.title === segment);
 
           if (!filteredWiki || filteredWiki.id === id)
-            return <span className={classNames('text-base font-normal')}>{segment}</span>;
+            return (
+              <span key={segment + Math.random()} className={classNames('text-base font-normal')}>
+                {segment}
+              </span>
+            );
 
           return (
             <Link

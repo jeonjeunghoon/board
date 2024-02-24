@@ -7,7 +7,7 @@ export default function BackLink() {
   return (
     <StyledLink to='..' variant='secondary'>
       <div className={classNames('flex gap-2')}>
-        <LeftArrow width='24px' height='24px' />
+        <LeftArrow />
         돌아가기
       </div>
     </StyledLink>

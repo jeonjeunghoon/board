@@ -42,13 +42,13 @@ export default function Pagination({
     <div className={classNames('mr-auto flex self-end')}>
       {hasGroupButton && (
         <PaginationButton onClick={moveToPreviousPageGroup} disabled={isDisabledPreviousGroup}>
-          <DoublePrevArrow width='24px' height='24px' />
+          <DoublePrevArrow />
         </PaginationButton>
       )}
 
       {totalPage > 1 && (
         <PaginationButton onClick={moveToPreviousPage} disabled={isDisabledPrevious}>
-          <PrevArrow width='24px' height='24px' />
+          <PrevArrow />
         </PaginationButton>
       )}
 
@@ -71,13 +71,13 @@ export default function Pagination({
       </ul>
       {totalPage > 1 && (
         <PaginationButton onClick={moveToNextPage} disabled={isDisabledNext}>
-          <NextArrow width='24px' height='24px' />
+          <NextArrow />
         </PaginationButton>
       )}
 
       {hasGroupButton && (
         <PaginationButton onClick={moveToNextPageGroup} disabled={isDisabledNextGroup}>
-          <DoubleNextArrow width='24px' height='24px' />
+          <DoubleNextArrow />
         </PaginationButton>
       )}
     </div>

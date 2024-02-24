@@ -23,6 +23,6 @@
 
     "esModuleInterop": true
   },
-  "include": ["src"],
+  "include": ["src", "svg.d.ts", "__tests__", "__mocks__"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

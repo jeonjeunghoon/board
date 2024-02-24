@@ -26,6 +26,7 @@ export default function Pagination({
   const isDisabledNext = activePage === totalPage;
   const isDisabledPreviousGroup = startPageIndex < pageRange + 1;
   const isDisabledNextGroup = startPageIndex + pageRange > totalPage;
+  const hasGroupButton = totalPage > pageRange;
 
   const moveToPage = (page: number) => handleChangePage(page);
   const moveToPreviousPage = () => moveToPage(activePage - 1);
@@ -35,9 +36,12 @@ export default function Pagination({
 
   return (
     <div className='flex'>
-      <PaginationButton onClick={moveToPreviousPageGroup} disabled={isDisabledPreviousGroup}>
-        <DoublePrevArrow width='24px' height='24px' />
-      </PaginationButton>
+      {hasGroupButton && (
+        <PaginationButton onClick={moveToPreviousPageGroup} disabled={isDisabledPreviousGroup}>
+          <DoublePrevArrow width='24px' height='24px' />
+        </PaginationButton>
+      )}
+
       <PaginationButton onClick={moveToPreviousPage} disabled={isDisabledPrevious}>
         <PrevArrow width='24px' height='24px' />
       </PaginationButton>
@@ -63,9 +67,12 @@ export default function Pagination({
       <PaginationButton onClick={moveToNextPage} disabled={isDisabledNext}>
         <NextArrow width='24px' height='24px' />
       </PaginationButton>
-      <PaginationButton onClick={moveToNextPageGroup} disabled={isDisabledNextGroup}>
-        <DoubleNextArrow width='24px' height='24px' />
-      </PaginationButton>
+
+      {hasGroupButton && (
+        <PaginationButton onClick={moveToNextPageGroup} disabled={isDisabledNextGroup}>
+          <DoubleNextArrow width='24px' height='24px' />
+        </PaginationButton>
+      )}
     </div>
   );
 }

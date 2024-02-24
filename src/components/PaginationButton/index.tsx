@@ -18,6 +18,7 @@ export default function PaginationButton({
         {
           'bg-secondaryTextBackgroundFocus font-medium': isFocused,
           'hover:bg-secondaryTextBackgroundHover': !disabled,
+          'hover:cursor-not-allowed': disabled,
         },
       )}
       disabled={disabled}

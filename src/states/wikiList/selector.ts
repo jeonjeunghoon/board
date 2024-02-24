@@ -9,7 +9,7 @@ export const wikiListNewIdState = selector({
 });
 
 export const targetWikiState = selectorFamily({
-  key: 'targetCartProductState',
+  key: 'targetWikiState',
   get:
     ({ targetId }: { targetId: number }) =>
     ({ get }) =>

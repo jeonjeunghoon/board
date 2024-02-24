@@ -1,5 +1,5 @@
-import { Link, useLocation } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
 import classNames from 'classnames';
 
 import { PATHS } from '../../constants/routes';
@@ -8,14 +8,24 @@ import { wikiListState } from '../../states/wikiList';
 import Title from '../../components/Title';
 import StyledLink from '../../components/commons/StyledLink';
 import BackLink from '../../components/BackLink';
+import Button from '../../components/commons/Button';
 
 export default function WikiContent() {
   const { pathname } = useLocation();
   const id = Number(pathname.split('/').pop());
   const { title, content } = useWikiContent(id);
-  const filteredWikiList = useRecoilValue(wikiListState).map(({ id, title }) => ({ id, title }));
+  const [wikiList, setWikiList] = useRecoilState(wikiListState);
+  const filteredWikiList = wikiList.map(({ id, title }) => ({ id, title }));
+  const navigate = useNavigate();
 
-  if (!title || !content?.length) throw new Error('잘못된 접근입니다');
+  const deleteWiki = () => {
+    if (!confirm('삭제하시겠습니까?')) return;
+
+    setWikiList((oldWikiList) => oldWikiList.filter((oldWiki) => oldWiki.id !== id));
+    navigate(PATHS.WIKI.BOARD);
+  };
+
+  if (!title || !content || !content.length) throw new Error('잘못된 접근입니다');
 
   return (
     <div className={classNames('flex h-full flex-col')}>
@@ -42,10 +52,13 @@ export default function WikiContent() {
         })}
       </article>
 
-      <div className={classNames('mt-20 self-end')}>
+      <div className={classNames('mt-20 flex gap-4 self-end')}>
         <StyledLink to={PATHS.WIKI.EDITOR} state={id}>
           수정하기
         </StyledLink>
+        <Button className={classNames('bg-thirdBackground')} onClick={deleteWiki}>
+          삭제하기
+        </Button>
       </div>
     </div>
   );

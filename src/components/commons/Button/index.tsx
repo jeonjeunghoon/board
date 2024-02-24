@@ -1,12 +1,20 @@
 import { ComponentPropsWithoutRef } from 'react';
 import classNames from 'classnames';
 
-type Props = Omit<ComponentPropsWithoutRef<'button'>, 'className'>;
-
-export default function Button({ children, ...rest }: Props) {
+export default function Button({
+  className,
+  disabled,
+  children,
+  ...rest
+}: ComponentPropsWithoutRef<'button'>) {
   return (
     <button
-      className={classNames('bg-primaryTextBackground text-primaryText h-14 w-40 rounded-lg')}
+      className={classNames(
+        'bg-primaryTextBackground text-primaryText h-14 w-40 rounded-lg',
+        { 'bg-opacity-50 hover:cursor-not-allowed': disabled },
+        className,
+      )}
+      disabled={disabled}
       {...rest}
     >
       {children}

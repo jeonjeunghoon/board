@@ -1,18 +1,21 @@
+import { Dispatch, SetStateAction } from 'react';
+
 import Textarea from '../commons/Textarea';
 
 type Props = {
-  defaultValue?: string;
+  value: string;
+  setValue: Dispatch<SetStateAction<string>>;
 };
 
-export default function ContentEditor({ defaultValue = '' }: Props) {
+export default function ContentEditor({ value, setValue }: Props) {
   return (
     <Textarea
       className='flex-grow outline-none'
       name='content'
       autoComplete='off'
       placeholder='내용을 입력하세요'
-      defaultValue={defaultValue}
-      required
+      value={value}
+      onChange={(event) => setValue(event.currentTarget.value)}
     />
   );
 }

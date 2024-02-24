@@ -10,6 +10,7 @@ export default {
       primaryTextHover: '#FFFFFF',
       secondaryText: '#6B7684',
       secondaryTextHover: '#0056B3',
+      error: '#ED4337',
     },
 
     backgroundColor: {
@@ -22,6 +23,7 @@ export default {
 
     borderColor: {
       primary: '#E5E8EA',
+      error: '#ED4337',
     },
   },
   plugins: [],

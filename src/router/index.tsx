@@ -8,6 +8,7 @@ import WikiContent from '../pages/WikiContent';
 import WikiCreator from '../pages/WikiCreator';
 import WikiBoard from '../pages/WikiBoard';
 import WikiEditor from '../pages/WikiEditor';
+import NotFound from '../pages/NotFound';
 
 export default function Router() {
   const router = createBrowserRouter([
@@ -38,6 +39,7 @@ export default function Router() {
           ],
         },
       ],
+      errorElement: <NotFound />,
     },
   ]);
 

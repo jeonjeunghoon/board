@@ -15,7 +15,7 @@ export default function WikiContent() {
   const { title, content } = useWikiContent(id);
   const filteredWikiList = useRecoilValue(wikiListState).map(({ id, title }) => ({ id, title }));
 
-  if (!title || !content?.length) return <div>잘못된 접근입니다.</div>;
+  if (!title || !content?.length) throw new Error('잘못된 접근입니다');
 
   return (
     <div className={classNames('flex h-full flex-col')}>

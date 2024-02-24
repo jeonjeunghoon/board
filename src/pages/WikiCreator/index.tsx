@@ -66,7 +66,9 @@ export default function WikiCreator() {
             onBlur={validateTitle}
             autoFocus
           />
-          {isError && <p className={classNames('text-error')}>{errorMessage}</p>}
+          <div className={classNames('text-error h-6')}>
+            <p>{errorMessage}</p>
+          </div>
         </div>
 
         <ContentEditor value={content} setValue={setContent} />

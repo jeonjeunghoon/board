@@ -44,12 +44,14 @@ export default function WikiCreator() {
   return (
     <div className={classNames('flex h-full flex-col')}>
       <BackLink />
+
       <form className='flex flex-grow flex-col' onSubmit={addWiki}>
         <div className={classNames('mb-14')}>
           <Textarea
             className={classNames(
-              'border-primary w-full self-start border-b py-4 text-5xl font-bold outline-none',
-              { 'border-error text-error': isError },
+              'w-full border-b-2 py-4 text-5xl font-bold outline-none',
+              { 'border-error text-error focus:border-error': isError },
+              { 'border-primary focus:border-focus': !isError },
             )}
             name='title'
             autoComplete='off'

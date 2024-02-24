@@ -24,6 +24,7 @@ export default {
     borderColor: {
       primary: '#E5E8EA',
       error: '#ED4337',
+      focus: '#307FFF',
     },
   },
   plugins: [],

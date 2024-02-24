@@ -41,18 +41,26 @@ export default function Pagination({
   return (
     <div className={classNames('mr-auto flex self-end')}>
       {hasGroupButton && (
-        <PaginationButton onClick={moveToPreviousPageGroup} disabled={isDisabledPreviousGroup}>
+        <PaginationButton
+          onClick={moveToPreviousPageGroup}
+          disabled={isDisabledPreviousGroup}
+          role='previous-group-button'
+        >
           <DoublePrevArrow />
         </PaginationButton>
       )}
 
       {totalPage > 1 && (
-        <PaginationButton onClick={moveToPreviousPage} disabled={isDisabledPrevious}>
+        <PaginationButton
+          onClick={moveToPreviousPage}
+          disabled={isDisabledPrevious}
+          role='previous-button'
+        >
           <PrevArrow />
         </PaginationButton>
       )}
 
-      <ul className='flex'>
+      <ul className='flex' role='pagination'>
         {PageList.map((page) => {
           const isCurrentPage = activePage === page;
 
@@ -62,6 +70,7 @@ export default function Pagination({
                 onClick={() => moveToPage(page)}
                 disabled={isCurrentPage}
                 isFocused={isCurrentPage}
+                role='page-button'
               >
                 {page}
               </PaginationButton>
@@ -70,13 +79,17 @@ export default function Pagination({
         })}
       </ul>
       {totalPage > 1 && (
-        <PaginationButton onClick={moveToNextPage} disabled={isDisabledNext}>
+        <PaginationButton onClick={moveToNextPage} disabled={isDisabledNext} role='next-button'>
           <NextArrow />
         </PaginationButton>
       )}
 
       {hasGroupButton && (
-        <PaginationButton onClick={moveToNextPageGroup} disabled={isDisabledNextGroup}>
+        <PaginationButton
+          onClick={moveToNextPageGroup}
+          disabled={isDisabledNextGroup}
+          role='next-group-button'
+        >
           <DoubleNextArrow />
         </PaginationButton>
       )}

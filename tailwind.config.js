@@ -3,6 +3,7 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     colors: {
+      primary: '#307FFF',
       black: '#333D4B',
       primaryText: '#FFFFFF',
       primaryTextHover: '#FFFFFF',

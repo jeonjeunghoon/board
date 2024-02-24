@@ -21,11 +21,15 @@ export default function StyledLink({ to, variant = 'primary', children, ...rest 
 
   return (
     <Link
-      className={classNames('flex justify-center rounded-lg align-middle', linkStyleSet[variant])}
+      className={classNames(
+        'flex items-center justify-center rounded-lg',
+        linkStyleSet[variant],
+        textStyleSet[variant],
+      )}
       to={to}
       {...rest}
     >
-      <p className={classNames('my-auto', textStyleSet[variant])}>{children}</p>
+      {children}
     </Link>
   );
 }

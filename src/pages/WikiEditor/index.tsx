@@ -43,7 +43,7 @@ export default function WikiEditor() {
     <form className={classNames('flex h-full flex-col')} onSubmit={editWiki}>
       <Title>{title}</Title>
 
-      <ContentEditor value={editedContent} setValue={setEditedContent} />
+      <ContentEditor value={editedContent} setValue={setEditedContent} isFocused />
 
       <div className={classNames('mt-20 flex gap-4 self-end')}>
         <Button disabled={!title || !editedContent}>수정하기</Button>

@@ -1,12 +1,14 @@
 import { FormEvent } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
+import classNames from 'classnames';
 
 import { PATHS } from '../../constants/routes';
 import { wikiListState } from '../../states/wikiList';
 import { parseFormData } from '../../utils/form';
-import Textarea from '../../components/commons/Textarea';
 import Button from '../../components/commons/Button';
+import Title from '../../components/Title';
+import ContentEditor from '../../components/ContentEditor';
 import { useWiki } from '../../hooks/useWiki';
 
 export default function WikiEditor() {
@@ -41,24 +43,12 @@ export default function WikiEditor() {
   if (!title || !content) return <div>질못된 접근입니다.</div>;
 
   return (
-    <form className='flex flex-col' onSubmit={editWiki}>
-      <Textarea
-        name='title'
-        autoComplete='off'
-        placeholder='제목을 입력하세요'
-        rows={1}
-        defaultValue={title}
-        disabled
-      />
-      <Textarea
-        name='content'
-        autoComplete='off'
-        placeholder='내용을 입력하세요'
-        defaultValue={content}
-        required
-      />
+    <form className={classNames('flex h-full flex-col')} onSubmit={editWiki}>
+      <Title>{title}</Title>
 
-      <div className='flex'>
+      <ContentEditor defaultValue={content} />
+
+      <div className={classNames('mt-20 flex gap-4 self-end')}>
         <Button type='submit'>수정하기</Button>
         <Button type='button' onClick={cancelEditWiki}>
           취소하기

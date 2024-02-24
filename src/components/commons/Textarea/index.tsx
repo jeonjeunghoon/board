@@ -1,7 +1,6 @@
 import { ComponentPropsWithRef } from 'react';
+import classNames from 'classnames';
 
-type Props = Omit<ComponentPropsWithRef<'textarea'>, 'className'>;
-
-export default function Textarea({ ...rest }: Props) {
-  return <textarea className='resize-none' {...rest} />;
+export default function Textarea({ className, ...rest }: ComponentPropsWithRef<'textarea'>) {
+  return <textarea className={classNames('resize-none', className)} {...rest} />;
 }

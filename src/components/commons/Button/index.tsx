@@ -6,7 +6,7 @@ type Props = Omit<ComponentPropsWithoutRef<'button'>, 'className'>;
 export default function Button({ children, ...rest }: Props) {
   return (
     <button
-      className={classNames('bg-primaryTextBackground text-primaryText rounded-lg px-20 py-4')}
+      className={classNames('bg-primaryTextBackground text-primaryText h-14 w-40 rounded-lg')}
       {...rest}
     >
       {children}

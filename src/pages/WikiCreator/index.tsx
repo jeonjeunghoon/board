@@ -33,7 +33,7 @@ export default function WikiCreator() {
 
     setWikiList((oldWikiList) => [...oldWikiList, { id, title, content }]);
 
-    navigate(PATHS.WIKI.MAIN);
+    navigate(`${PATHS.WIKI.MAIN}/${id}`);
   };
 
   const cancelAddWiki = () => {

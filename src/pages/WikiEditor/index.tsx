@@ -33,7 +33,7 @@ export default function WikiEditor() {
       }),
     ]);
 
-    navigate(PATHS.WIKI.MAIN);
+    navigate(`${PATHS.WIKI.MAIN}/${id}`);
   };
 
   const cancelEditWiki = () => {

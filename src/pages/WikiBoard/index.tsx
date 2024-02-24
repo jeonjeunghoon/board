@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
+import classNames from 'classnames';
 
 import { paginatedWikiListState } from '../../states/wikiList';
 import { PATHS } from '../../constants/routes';
@@ -22,13 +23,13 @@ export default function WikiBoard() {
 
       <WikiList wikiList={paginatedWikiList} />
 
-      <div className='mt-auto flex w-full justify-between self-start'>
+      <div className={classNames('flex')}>
         <Pagination
           activePage={activePage}
           totalPage={totalPage}
           handleChangePage={setActivePage}
         />
-        <StyledLink to={PATHS.WIKI.CREATOR} target='_blank'>
+        <StyledLink className={classNames('ml-auto')} to={PATHS.WIKI.CREATOR} target='_blank'>
           위키 추가하기
         </StyledLink>
       </div>

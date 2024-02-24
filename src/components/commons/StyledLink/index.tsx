@@ -8,7 +8,13 @@ type Props = {
 } & LinkProps &
   PropsWithChildren;
 
-export default function StyledLink({ to, variant = 'primary', children, ...rest }: Props) {
+export default function StyledLink({
+  to,
+  variant = 'primary',
+  className = '',
+  children,
+  ...rest
+}: Props) {
   const linkStyleSet = {
     primary: 'h-14 w-40 bg-primaryTextBackground',
     secondary: 'h-fit w-fit bg-secondaryTextBackground',
@@ -25,6 +31,7 @@ export default function StyledLink({ to, variant = 'primary', children, ...rest 
         'flex items-center justify-center rounded-lg',
         linkStyleSet[variant],
         textStyleSet[variant],
+        className,
       )}
       to={to}
       {...rest}

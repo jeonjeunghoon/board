@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import { generateNumberListByAscendingOrdered } from '../../../utils/list';
 import PrevArrow from '../../../assets/svgs/arrow-prev.svg?react';
 import NextArrow from '../../../assets/svgs/arrow-next.svg?react';
@@ -34,17 +36,21 @@ export default function Pagination({
   const moveToPreviousPageGroup = () => moveToPage(startPageIndex - pageRange);
   const moveToNextPageGroup = () => moveToPage(startPageIndex + pageRange);
 
+  if (!totalPage) return null;
+
   return (
-    <div className='flex'>
+    <div className={classNames('mr-auto flex self-end')}>
       {hasGroupButton && (
         <PaginationButton onClick={moveToPreviousPageGroup} disabled={isDisabledPreviousGroup}>
           <DoublePrevArrow width='24px' height='24px' />
         </PaginationButton>
       )}
 
-      <PaginationButton onClick={moveToPreviousPage} disabled={isDisabledPrevious}>
-        <PrevArrow width='24px' height='24px' />
-      </PaginationButton>
+      {totalPage > 1 && (
+        <PaginationButton onClick={moveToPreviousPage} disabled={isDisabledPrevious}>
+          <PrevArrow width='24px' height='24px' />
+        </PaginationButton>
+      )}
 
       <ul className='flex'>
         {PageList.map((page) => {
@@ -63,10 +69,11 @@ export default function Pagination({
           );
         })}
       </ul>
-
-      <PaginationButton onClick={moveToNextPage} disabled={isDisabledNext}>
-        <NextArrow width='24px' height='24px' />
-      </PaginationButton>
+      {totalPage > 1 && (
+        <PaginationButton onClick={moveToNextPage} disabled={isDisabledNext}>
+          <NextArrow width='24px' height='24px' />
+        </PaginationButton>
+      )}
 
       {hasGroupButton && (
         <PaginationButton onClick={moveToNextPageGroup} disabled={isDisabledNextGroup}>

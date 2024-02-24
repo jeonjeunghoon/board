@@ -16,8 +16,8 @@ export default function PaginationButton({
       className={classNames(
         'flex h-9 w-9 items-center justify-center rounded-full font-normal text-black',
         {
-          'bg-secondaryTextBackgroundFocus font-medium': isFocused,
-          'hover:bg-secondaryTextBackgroundHover': !disabled,
+          'bg-secondaryBackgroundFocus font-medium': isFocused,
+          'hover:bg-secondaryBackgroundHover': !disabled,
           'hover:cursor-not-allowed': disabled,
         },
       )}

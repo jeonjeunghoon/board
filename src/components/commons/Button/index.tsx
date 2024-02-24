@@ -10,7 +10,7 @@ export default function Button({
   return (
     <button
       className={classNames(
-        'bg-primaryTextBackground text-primaryText h-14 w-40 rounded-lg',
+        'bg-primaryBackground text-primaryText h-14 w-40 rounded-lg',
         { 'bg-opacity-50 hover:cursor-not-allowed': disabled },
         className,
       )}

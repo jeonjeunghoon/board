@@ -14,11 +14,12 @@ export default {
     },
 
     backgroundColor: {
-      primaryTextBackground: '#307FFF',
-      primaryTextBackgroundHover: '#1B64D9',
-      secondaryTextBackground: '#FFFFFF',
-      secondaryTextBackgroundHover: '#F3F4F5',
-      secondaryTextBackgroundFocus: '#E5E8EA',
+      primaryBackground: '#307FFF',
+      primaryBackgroundHover: '#1B64D9',
+      secondaryBackground: '#FFFFFF',
+      secondaryBackgroundHover: '#F3F4F5',
+      secondaryBackgroundFocus: '#E5E8EA',
+      thirdBackground: '#6B7684',
     },
 
     borderColor: {

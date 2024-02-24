@@ -18,7 +18,7 @@ export default function WikiList({ wikiList }: Props) {
           <li key={id}>
             <Link
               className={classNames(
-                'hover:text-secondaryTextHover hover:bg-secondaryTextBackgroundHover block w-full rounded-lg px-6 py-8 text-2xl font-thin',
+                'hover:text-secondaryTextHover hover:bg-secondaryBackgroundHover block w-full rounded-lg px-6 py-8 text-2xl font-thin',
               )}
               to={String(id)}
             >

@@ -16,8 +16,8 @@ export default function StyledLink({
   ...rest
 }: Props) {
   const linkStyleSet = {
-    primary: 'h-14 w-40 bg-primaryTextBackground',
-    secondary: 'h-fit w-fit bg-secondaryTextBackground',
+    primary: 'h-14 w-40 bg-primaryBackground',
+    secondary: 'h-fit w-fit bg-secondaryBackground',
   };
 
   const textStyleSet = {

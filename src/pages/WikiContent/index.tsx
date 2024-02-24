@@ -23,7 +23,7 @@ export default function WikiContent() {
 
       <Title>{title}</Title>
 
-      <article className={classNames('flex-grow')}>
+      <article className={classNames('flex-grow whitespace-pre-line')}>
         {content.map((segment) => {
           const filteredWiki = filteredWikiList.find((info) => info.title === segment);
 

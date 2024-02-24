@@ -2,13 +2,14 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { Wiki } from '../../types/wiki';
+import EmptyWikiList from '../commons/EmptyWikiList';
 
 type Props = {
   wikiList: Wiki[];
 };
 
 export default function WikiList({ wikiList }: Props) {
-  if (!wikiList.length) return <div>위키가 존재하지 않아요.</div>;
+  if (!wikiList.length) return <EmptyWikiList />;
 
   return (
     <ul>

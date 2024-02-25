@@ -44,15 +44,18 @@ export default function WikiCreator() {
 
   return (
     <div className={classNames('flex h-full flex-col')}>
-      <BackLink />
+      <div className={classNames('max-lg:mb-6 max-lg:px-6')}>
+        <BackLink />
+      </div>
 
       <form className='flex flex-grow flex-col' onSubmit={addWiki}>
-        <div className={classNames('mb-14')}>
+        <div className={classNames('o mb-14')}>
           <Textarea
             className={classNames(
               'w-full border-b-2 py-4 text-5xl font-bold outline-none',
               { 'border-error text-error focus:border-error': isError },
               { 'border-primary focus:border-focus': !isError },
+              'max-lg:px-6',
             )}
             name='title'
             autoComplete='off'
@@ -72,13 +75,19 @@ export default function WikiCreator() {
           </div>
         </div>
 
-        <ContentEditor value={content} setValue={setContent} />
+        <div className='flex flex-grow max-lg:px-6'>
+          <ContentEditor value={content} setValue={setContent} />
+        </div>
 
-        <div className={classNames('mt-20 flex gap-4 self-end')}>
-          <Button type='submit' disabled={isError || !title || !content}>
+        <div className={classNames('mt-20 flex gap-4 self-end max-lg:w-full max-lg:px-6')}>
+          <Button className='max-lg:flex-1' type='submit' disabled={isError || !title || !content}>
             추가하기
           </Button>
-          <Button className='bg-thirdBackground' type='button' onClick={cancelAddWiki}>
+          <Button
+            className='bg-thirdBackground max-lg:flex-1'
+            type='button'
+            onClick={cancelAddWiki}
+          >
             취소하기
           </Button>
         </div>

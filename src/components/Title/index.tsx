@@ -9,7 +9,7 @@ export default function Title({ cursor = 'auto', children }: Props) {
   return (
     <h1
       className={classNames(
-        `border-primary mb-14 w-full self-start border-b py-4 cursor-${cursor}`,
+        `mb-14 w-full self-start border-b border-primary py-4 cursor-${cursor} max-lg:mb-10 max-lg:px-6`,
       )}
     >
       {children}

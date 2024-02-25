@@ -40,11 +40,15 @@ export default function WikiEditor() {
     <form className={classNames('flex h-full flex-col')} onSubmit={editWiki}>
       <Title>{title}</Title>
 
-      <ContentEditor value={editedContent} setValue={setEditedContent} isFocused />
+      <div className='flex flex-grow max-lg:px-6'>
+        <ContentEditor value={editedContent} setValue={setEditedContent} isFocused />
+      </div>
 
-      <div className={classNames('mt-20 flex gap-4 self-end')}>
-        <Button disabled={!editedContent}>수정하기</Button>
-        <Button className='bg-thirdBackground' type='button' onClick={cancelEditWiki}>
+      <div className={classNames('mt-20 flex gap-4 self-end max-lg:w-full max-lg:px-6')}>
+        <Button className='max-lg:flex-1' disabled={!editedContent}>
+          수정하기
+        </Button>
+        <Button className='bg-thirdBackground max-lg:flex-1' type='button' onClick={cancelEditWiki}>
           취소하기
         </Button>
       </div>

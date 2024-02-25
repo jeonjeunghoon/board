@@ -32,11 +32,13 @@ export default function WikiContent() {
 
   return (
     <div className={classNames('flex h-full flex-col')}>
-      <BackLink />
+      <div className={classNames('max-lg:mb-6 max-lg:px-6')}>
+        <BackLink />
+      </div>
 
       <Title>{title}</Title>
 
-      <article className={classNames('flex-grow whitespace-pre-line')}>
+      <article className={classNames('flex-grow whitespace-pre-line max-lg:px-6')}>
         {content.map((segment) => {
           const key = uuid();
           const filteredWiki = filteredWikiList.find((info) => info.title === segment);
@@ -62,11 +64,11 @@ export default function WikiContent() {
         })}
       </article>
 
-      <div className={classNames('mt-20 flex gap-4 self-end')}>
-        <StyledLink to={PATHS.WIKI.EDITOR} state={id}>
+      <div className={classNames('mt-20 flex gap-4 self-end max-lg:w-full max-lg:px-6')}>
+        <StyledLink className='max-lg:flex-1' to={PATHS.WIKI.EDITOR} state={id}>
           수정하기
         </StyledLink>
-        <Button className={classNames('bg-thirdBackground')} onClick={deleteWiki}>
+        <Button className={classNames('bg-thirdBackground max-lg:flex-1')} onClick={deleteWiki}>
           삭제하기
         </Button>
       </div>

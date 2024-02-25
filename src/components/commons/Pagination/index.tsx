@@ -49,7 +49,7 @@ export default function Pagination({
   if (!pageLength) return null;
 
   return (
-    <div className={classNames('mr-auto flex self-end')}>
+    <div className={classNames('mr-auto flex self-center')}>
       {HAS_MOVE_BUTTON.GROUP && (
         <PaginationButton
           onClick={MOVE_TO.PREVIOUS_GROUP_PAGE}

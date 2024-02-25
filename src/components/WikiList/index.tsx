@@ -13,7 +13,7 @@ export default function WikiList({ wikiList }: Props) {
   if (!wikiList.length) return <EmptyWikiList />;
 
   return (
-    <ul className={classNames(' mb-14 flex-grow')}>
+    <ul className={classNames('mb-14 flex-grow max-lg:mb-0')}>
       {wikiList.map(({ id, title }) => {
         return (
           <li key={uuid()}>

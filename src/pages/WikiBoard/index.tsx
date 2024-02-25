@@ -23,11 +23,12 @@ export default function WikiBoard() {
 
       <WikiList wikiList={paginatedWikiList} />
 
-      <div className={classNames('flex pt-4')}>
+      <div className={classNames('flex pt-4 max-lg:px-6')}>
         <Pagination
           activePage={activePage}
           totalPage={totalPage}
           handleChangePage={setActivePage}
+          pageRange={5}
         />
         <StyledLink className={classNames('ml-auto')} to={PATHS.WIKI.CREATOR} target='_blank'>
           위키 추가하기

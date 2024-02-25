@@ -1,6 +1,7 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import classNames from 'classnames';
+import { v4 as uuid } from 'uuid';
 
 import { PATHS } from '../../constants/routes';
 import { useWikiParsedContent } from '../../hooks/useWikiParsedContent';
@@ -17,6 +18,7 @@ export default function WikiContent() {
   const [wikiList, setWikiList] = useRecoilState(wikiListState);
   const filteredWikiList = wikiList.map(({ id, title }) => ({ id, title }));
   const navigate = useNavigate();
+  const notFoundContent = !title || !content || !content.length;
 
   const deleteWiki = () => {
     if (!confirm('삭제하시겠습니까?')) return;
@@ -25,7 +27,7 @@ export default function WikiContent() {
     navigate(PATHS.WIKI.BOARD);
   };
 
-  if (!title || !content || !content.length) throw new Error('잘못된 접근입니다');
+  if (notFoundContent) throw new Error('잘못된 접근입니다');
 
   return (
     <div className={classNames('flex h-full flex-col')}>
@@ -35,14 +37,12 @@ export default function WikiContent() {
 
       <article className={classNames('flex-grow whitespace-pre-line')}>
         {content?.map((segment) => {
+          const key = uuid();
           const filteredWiki = filteredWikiList.find((info) => info.title === segment);
 
           if (!filteredWiki || filteredWiki.id === id)
             return (
-              <span
-                key={segment + Math.random()}
-                className={classNames('whitespace-pre text-base font-normal')}
-              >
+              <span key={key} className={classNames('whitespace-pre text-base font-normal')}>
                 {segment}
               </span>
             );
@@ -50,7 +50,7 @@ export default function WikiContent() {
           return (
             <Link
               className={classNames('text-primary')}
-              key={segment + Math.random()}
+              key={key}
               to={`${PATHS.WIKI.MAIN}/${filteredWiki.id}`}
             >
               {segment}

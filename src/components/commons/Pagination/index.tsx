@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { v4 as uuid } from 'uuid';
 
 import { generateNumberListByAscendingOrdered } from '../../../utils/list';
 import PrevArrow from '../../../assets/svgs/arrow-prev.svg?react';
@@ -72,7 +73,7 @@ export default function Pagination({
       <ul className='flex' role='pagination'>
         {PageList.map((page) => {
           return (
-            <li key={page}>
+            <li key={uuid()}>
               <PaginationButton
                 onClick={() => MOVE_TO.PAGE(page)}
                 disabled={IS_DISABLED.CURRENT(page)}

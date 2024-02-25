@@ -6,7 +6,8 @@
 
 ## 배포된 페이지
 
-[위키](https://jjh-wiki.vercel.app/)
+[애플리케이션](https://jjh-wiki.vercel.app/)
+[스토리북](https://65db1930d5b4b6fd055b1fee-dhwqjtaftt.chromatic.com/)
 
 ## 실행 방법
 

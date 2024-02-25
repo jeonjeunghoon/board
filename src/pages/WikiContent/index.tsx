@@ -24,7 +24,7 @@ export default function WikiContent() {
   const deleteWiki = () => {
     if (!confirm(CONFIRM_MESSAGE.VERIFY_DELETE)) return;
 
-    setWikiList((oldWikiList) => oldWikiList.filter((oldWiki) => oldWiki.id !== id));
+    setWikiList(wikiList.filter((wiki) => wiki.id !== id));
     navigate(PATHS.WIKI.BOARD);
   };
 
@@ -40,22 +40,24 @@ export default function WikiContent() {
         {content.map((segment) => {
           const key = uuid();
           const filteredWiki = filteredWikiList.find((info) => info.title === segment);
+          const isLink = filteredWiki && filteredWiki.id !== id;
 
-          if (!filteredWiki || filteredWiki.id === id)
+          if (isLink) {
             return (
-              <span key={key} className={classNames('whitespace-pre text-base font-normal')}>
+              <Link
+                className={classNames('text-primary')}
+                key={key}
+                to={`${PATHS.WIKI.MAIN}/${filteredWiki.id}`}
+              >
                 {segment}
-              </span>
+              </Link>
             );
+          }
 
           return (
-            <Link
-              className={classNames('text-primary')}
-              key={key}
-              to={`${PATHS.WIKI.MAIN}/${filteredWiki.id}`}
-            >
+            <span key={key} className={classNames('whitespace-pre text-base font-normal')}>
               {segment}
-            </Link>
+            </span>
           );
         })}
       </article>

@@ -10,6 +10,7 @@ import Textarea from '../../components/commons/Textarea';
 import Button from '../../components/commons/Button';
 import BackLink from '../../components/BackLink';
 import ContentEditor from '../../components/ContentEditor';
+import { CONFIRM_MESSAGE, ERROR_MESSAGE } from '../../constants/message';
 
 export default function WikiCreator() {
   const [title, setTitle] = useState('');
@@ -24,13 +25,13 @@ export default function WikiCreator() {
     if (validateNewWiki(wikiList, title)) return;
 
     setIsError(true);
-    setErrorMessage('중복된 제목입니다');
+    setErrorMessage(ERROR_MESSAGE.DUPLICATED_TITLE);
   };
 
   const addWiki = () => {
-    if (!confirm('작성을 완료하시겠습니까?')) return;
+    if (!confirm(CONFIRM_MESSAGE.VERIFY_WRITE)) return;
 
-    if (!title || !content) throw new Error('잘못된 접근입니다');
+    if (!title || !content) throw new Error(ERROR_MESSAGE.WRONG_APPROACH);
 
     setWikiList((oldWikiList) => [...oldWikiList, { id, title, content }]);
 
@@ -38,7 +39,7 @@ export default function WikiCreator() {
   };
 
   const cancelAddWiki = () => {
-    if (confirm('작성을 취소하시겠습니까?')) navigate(PATHS.WIKI.MAIN);
+    if (confirm(CONFIRM_MESSAGE.CANCEL_WRITE)) navigate(PATHS.WIKI.MAIN);
   };
 
   return (
@@ -66,7 +67,7 @@ export default function WikiCreator() {
             onBlur={validateTitle}
             autoFocus
           />
-          <div className={classNames('text-error h-6')}>
+          <div className={classNames('h-6 text-error')}>
             <p>{errorMessage}</p>
           </div>
         </div>

@@ -5,9 +5,10 @@ import Layout from '../../components/commons/Layout';
 import classNames from 'classnames';
 import StyledLink from '../../components/commons/StyledLink';
 import { PATHS } from '../../constants/routes';
+import { ERROR_MESSAGE } from '../../constants/message';
 
 export default function NotFound() {
-  const [message, setMessage] = useState('잘못된 접근입니다');
+  const [message, setMessage] = useState(ERROR_MESSAGE.WRONG_APPROACH);
   const error = useRouteError();
 
   useEffect(() => {

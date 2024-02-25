@@ -10,6 +10,7 @@ import Title from '../../components/Title';
 import StyledLink from '../../components/commons/StyledLink';
 import BackLink from '../../components/BackLink';
 import Button from '../../components/commons/Button';
+import { CONFIRM_MESSAGE, ERROR_MESSAGE } from '../../constants/message';
 
 export default function WikiContent() {
   const { wikiId } = useParams();
@@ -21,13 +22,13 @@ export default function WikiContent() {
   const notFoundContent = !title || !content || !content.length;
 
   const deleteWiki = () => {
-    if (!confirm('삭제하시겠습니까?')) return;
+    if (!confirm(CONFIRM_MESSAGE.VERIFY_DELETE)) return;
 
     setWikiList((oldWikiList) => oldWikiList.filter((oldWiki) => oldWiki.id !== id));
     navigate(PATHS.WIKI.BOARD);
   };
 
-  if (notFoundContent) throw new Error('잘못된 접근입니다');
+  if (notFoundContent) throw new Error(ERROR_MESSAGE.WRONG_APPROACH);
 
   return (
     <div className={classNames('flex h-full flex-col')}>
@@ -36,7 +37,7 @@ export default function WikiContent() {
       <Title>{title}</Title>
 
       <article className={classNames('flex-grow whitespace-pre-line')}>
-        {content?.map((segment) => {
+        {content.map((segment) => {
           const key = uuid();
           const filteredWiki = filteredWikiList.find((info) => info.title === segment);
 

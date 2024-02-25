@@ -9,6 +9,7 @@ import Button from '../../components/commons/Button';
 import Title from '../../components/Title';
 import ContentEditor from '../../components/ContentEditor';
 import { useWiki } from '../../hooks/useWiki';
+import { CONFIRM_MESSAGE, ERROR_MESSAGE } from '../../constants/message';
 
 export default function WikiEditor() {
   const { state: id } = useLocation();
@@ -18,9 +19,9 @@ export default function WikiEditor() {
   const navigate = useNavigate();
 
   const editWiki = () => {
-    if (!confirm('수정을 완료하시겠습니까?')) return;
+    if (!confirm(CONFIRM_MESSAGE.VERIFY_EDIT)) return;
 
-    if (!title || !content || !editedContent) throw new Error('잘못된 접근입니다');
+    if (!title || !content || !editedContent) throw new Error(ERROR_MESSAGE.WRONG_APPROACH);
 
     setWikiList((oldWikiList) => [
       ...oldWikiList.map((oldWiki) => {
@@ -34,10 +35,10 @@ export default function WikiEditor() {
   };
 
   const cancelEditWiki = () => {
-    if (confirm('작성을 취소하시겠습니까?')) navigate(PATHS.WIKI.MAIN);
+    if (confirm(CONFIRM_MESSAGE.CANCEL_WRITE)) navigate(PATHS.WIKI.MAIN);
   };
 
-  if (!title || !content) throw new Error('잘못된 접근입니다');
+  if (!title || !content) throw new Error(ERROR_MESSAGE.WRONG_APPROACH);
 
   return (
     <form className={classNames('flex h-full flex-col')} onSubmit={editWiki}>

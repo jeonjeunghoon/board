@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil';
 import classNames from 'classnames';
 
 import { PATHS } from '../../constants/routes';
-import { useWikiContent } from '../../hooks/useWikiContent';
+import { useWikiParsedContent } from '../../hooks/useWikiParsedContent';
 import { wikiListState } from '../../states/wikiList';
 import Title from '../../components/Title';
 import StyledLink from '../../components/commons/StyledLink';
@@ -13,7 +13,7 @@ import Button from '../../components/commons/Button';
 export default function WikiContent() {
   const { pathname } = useLocation();
   const id = Number(pathname.split('/').pop());
-  const { title, content } = useWikiContent(id);
+  const { title, content } = useWikiParsedContent(id);
   const [wikiList, setWikiList] = useRecoilState(wikiListState);
   const filteredWikiList = wikiList.map(({ id, title }) => ({ id, title }));
   const navigate = useNavigate();
@@ -34,12 +34,15 @@ export default function WikiContent() {
       <Title>{title}</Title>
 
       <article className={classNames('flex-grow whitespace-pre-line')}>
-        {content.map((segment) => {
+        {content?.map((segment) => {
           const filteredWiki = filteredWikiList.find((info) => info.title === segment);
 
           if (!filteredWiki || filteredWiki.id === id)
             return (
-              <span key={segment + Math.random()} className={classNames('text-base font-normal')}>
+              <span
+                key={segment + Math.random()}
+                className={classNames('whitespace-pre text-base font-normal')}
+              >
                 {segment}
               </span>
             );

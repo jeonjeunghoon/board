@@ -5,14 +5,7 @@ import { RecoilRoot } from 'recoil';
 
 import WikiBoard from '../../src/pages/WikiBoard';
 import { InjectTestingRecoilState } from '../../__mocks__/utils/state';
-
-const generateWikiList = (length: number) => {
-  return Array.from({ length }, (_, i) => {
-    const n = i + 1;
-
-    return { id: n, title: `위키${n}`, content: `위키${n}내용` };
-  });
-};
+import { generateWikiList } from '../../__mocks__/utils/wikiList';
 
 describe('Board 페이지 테스트', () => {
   describe('wikiList 길이 0', () => {

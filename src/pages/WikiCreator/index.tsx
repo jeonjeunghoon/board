@@ -6,19 +6,19 @@ import classNames from 'classnames';
 import { validateNewWiki } from '../../utils/validator';
 import { wikiListNewIdState, wikiListState } from '../../states/wikiList';
 import { PATHS } from '../../constants/routes';
+import { CONFIRM_MESSAGE, ERROR_MESSAGE } from '../../constants/message';
 import Textarea from '../../components/commons/Textarea';
 import Button from '../../components/commons/Button';
 import BackLink from '../../components/BackLink';
 import ContentEditor from '../../components/ContentEditor';
-import { CONFIRM_MESSAGE, ERROR_MESSAGE } from '../../constants/message';
 
 export default function WikiCreator() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [wikiList, setWikiList] = useRecoilState(wikiListState);
-  const [isError, setIsError] = useState(false);
-  const id = useRecoilValue(wikiListNewIdState);
   const [errorMessage, setErrorMessage] = useState('');
+  const [isError, setIsError] = useState(false);
+  const [wikiList, setWikiList] = useRecoilState(wikiListState);
+  const id = useRecoilValue(wikiListNewIdState);
   const navigate = useNavigate();
 
   const validateTitle = () => {
@@ -78,7 +78,7 @@ export default function WikiCreator() {
           <Button type='submit' disabled={isError || !title || !content}>
             추가하기
           </Button>
-          <Button type='button' onClick={cancelAddWiki}>
+          <Button className='bg-thirdBackground' type='button' onClick={cancelAddWiki}>
             취소하기
           </Button>
         </div>

@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/react';
-import { withRouter, reactRouterParameters } from 'storybook-addon-react-router-v6';
+import { withRouter } from 'storybook-addon-react-router-v6';
 import { withRecoilFlow } from 'storybook-addon-recoil-flow/dist/decorator';
 import '../src/index.css';
 
@@ -12,9 +12,6 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
-    reactRouter: reactRouterParameters({
-      routing: { path: '/wiki' },
-    }),
   },
   decorators: [withRouter, withRecoilFlow],
 };

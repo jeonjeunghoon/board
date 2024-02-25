@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import classNames from 'classnames';
 
@@ -11,8 +11,8 @@ import BackLink from '../../components/BackLink';
 import Button from '../../components/commons/Button';
 
 export default function WikiContent() {
-  const { pathname } = useLocation();
-  const id = Number(pathname.split('/').pop());
+  const { wikiId } = useParams();
+  const id = Number(wikiId);
   const { title, content } = useWikiParsedContent(id);
   const [wikiList, setWikiList] = useRecoilState(wikiListState);
   const filteredWikiList = wikiList.map(({ id, title }) => ({ id, title }));

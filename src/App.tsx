@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 
-import Layout from './components/Layout';
+import Layout from './components/commons/Layout';
 import { PATHS } from './constants/routes';
 import { useRedirect } from './hooks/useRedirect';
 

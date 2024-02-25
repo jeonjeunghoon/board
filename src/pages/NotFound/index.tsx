@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouteError } from 'react-router-dom';
 
-import Layout from '../../components/Layout';
+import Layout from '../../components/commons/Layout';
 import classNames from 'classnames';
 import StyledLink from '../../components/commons/StyledLink';
 import { PATHS } from '../../constants/routes';

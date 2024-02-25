@@ -11,7 +11,7 @@ type Props = {
 export default function ContentEditor({ value, setValue, isFocused = false }: Props) {
   return (
     <Textarea
-      className='flex-grow outline-none'
+      className='flex-grow py-1 focus:outline-1 focus:outline-primary'
       name='content'
       autoComplete='off'
       placeholder='내용을 입력하세요'

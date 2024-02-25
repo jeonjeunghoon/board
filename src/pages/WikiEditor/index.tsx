@@ -44,7 +44,7 @@ export default function WikiEditor() {
 
       <div className={classNames('mt-20 flex gap-4 self-end')}>
         <Button disabled={!editedContent}>수정하기</Button>
-        <Button type='button' onClick={cancelEditWiki}>
+        <Button className='bg-thirdBackground' type='button' onClick={cancelEditWiki}>
           취소하기
         </Button>
       </div>

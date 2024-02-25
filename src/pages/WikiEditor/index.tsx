@@ -4,12 +4,12 @@ import { useSetRecoilState } from 'recoil';
 import classNames from 'classnames';
 
 import { PATHS } from '../../constants/routes';
+import { CONFIRM_MESSAGE, ERROR_MESSAGE } from '../../constants/message';
 import { wikiListState } from '../../states/wikiList';
 import Button from '../../components/commons/Button';
 import Title from '../../components/Title';
 import ContentEditor from '../../components/ContentEditor';
 import { useWiki } from '../../hooks/useWiki';
-import { CONFIRM_MESSAGE, ERROR_MESSAGE } from '../../constants/message';
 
 export default function WikiEditor() {
   const { state: id } = useLocation();
@@ -23,19 +23,15 @@ export default function WikiEditor() {
 
     if (!title || !content || !editedContent) throw new Error(ERROR_MESSAGE.WRONG_APPROACH);
 
-    setWikiList((oldWikiList) => [
-      ...oldWikiList.map((oldWiki) => {
-        if (oldWiki.id === id) return { ...oldWiki, content: editedContent };
+    setWikiList((wikiList) => {
+      return wikiList.map((wiki) => (wiki.id === id ? { ...wiki, content: editedContent } : wiki));
+    });
 
-        return oldWiki;
-      }),
-    ]);
-
-    navigate(`${PATHS.WIKI.MAIN}/${id}`);
+    navigate(`${PATHS.WIKI.BOARD}/${id}`);
   };
 
   const cancelEditWiki = () => {
-    if (confirm(CONFIRM_MESSAGE.CANCEL_WRITE)) navigate(PATHS.WIKI.MAIN);
+    if (confirm(CONFIRM_MESSAGE.CANCEL_WRITE)) navigate(PATHS.WIKI.BOARD);
   };
 
   if (!title || !content) throw new Error(ERROR_MESSAGE.WRONG_APPROACH);
@@ -47,7 +43,7 @@ export default function WikiEditor() {
       <ContentEditor value={editedContent} setValue={setEditedContent} isFocused />
 
       <div className={classNames('mt-20 flex gap-4 self-end')}>
-        <Button disabled={!title || !editedContent}>수정하기</Button>
+        <Button disabled={!editedContent}>수정하기</Button>
         <Button type='button' onClick={cancelEditWiki}>
           취소하기
         </Button>

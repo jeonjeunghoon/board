@@ -13,13 +13,13 @@ export default function WikiList({ wikiList }: Props) {
   if (!wikiList.length) return <EmptyWikiList />;
 
   return (
-    <ul className={classNames('flex-grow')}>
+    <ul className={classNames(' mb-14 flex-grow')}>
       {wikiList.map(({ id, title }) => {
         return (
           <li key={uuid()}>
             <Link
               className={classNames(
-                'block w-full rounded-lg px-6 py-8 text-2xl font-thin hover:bg-secondaryBackgroundHover hover:text-secondaryTextHover',
+                'animate-fade block w-full rounded-lg px-6 py-8 text-2xl font-thin hover:bg-secondaryBackgroundHover hover:text-secondaryTextHover',
               )}
               to={String(id)}
             >

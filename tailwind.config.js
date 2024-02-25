@@ -27,6 +27,23 @@ export default {
       error: '#ED4337',
       focus: '#307FFF',
     },
+
+    animation: {
+      fade: 'fadeIn .5s ease-in-out',
+    },
+
+    keyframes: {
+      fadeIn: {
+        from: {
+          opacity: 0,
+          transform: 'translate3d(0, 20%, 0)',
+        },
+        to: {
+          opacity: 1,
+          transform: 'translateZ(0)',
+        },
+      },
+    },
   },
   plugins: [],
 };

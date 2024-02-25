@@ -23,7 +23,7 @@ export default function WikiBoard() {
 
       <WikiList wikiList={paginatedWikiList} />
 
-      <div className={classNames('flex')}>
+      <div className={classNames('flex pt-4')}>
         <Pagination
           activePage={activePage}
           totalPage={totalPage}

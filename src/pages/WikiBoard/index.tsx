@@ -19,7 +19,7 @@ export default function WikiBoard() {
 
   return (
     <div className='flex h-full flex-col'>
-      <Title cursor='default'>위키 게시판</Title>
+      <Title cursor='default'>게시판</Title>
 
       <WikiList wikiList={paginatedWikiList} />
 
